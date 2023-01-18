@@ -1,14 +1,17 @@
-# prime number v0.4
+# prime number v0.5
 
 number = int(input('input integer number : '))
-is_prime = True  # True가 유지 되면 소수
+is_prime = True
 
-for k in range(2, number):  # 2부터 입력 된 수 앞까지 반복
-    if number % k == 0:  # k로 나누어 떨어지면
-        is_prime = False
-        break  # 첫 번째 약수 발견시 for문 탈출
+if number <= 1:
+    is_prime = False
+else:
+    for k in range(2, number):
+        if number % k == 0:
+            is_prime = False
+            break
 
-if is_prime:  # is_prime 변수의 True 값이 유지되면 소수
+if is_prime:
     print(f'{number} is prime number!')
 else:
     print(f'{number} is NOT prime number.')
