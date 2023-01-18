@@ -1,8 +1,11 @@
-# prime number v0.8
+# prime number v0.9
 
 number_list = input('input 2 integer number : ').split()
 start = int(number_list[0])
 end = int(number_list[1])
+
+if end < start:
+    start, end = end, start  # tuple packing & unpacking
 
 for number in range(start, end+1):
     if number > 1:
