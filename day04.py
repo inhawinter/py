@@ -1,39 +1,39 @@
-import copy
+groups = {
+    '빅뱅': ['GD', '태양', '탑', '대성', '승리'],
+    '마마무': ['문별', '솔라', '휘인', '화사']
+}
 
-odds = list(range(1, 11, 2))
-print(odds)
+# print(groups['빅뱅'].pop(-1))
+# print(groups)
+# print(groups.pop('마마무'))
+# print(groups)
+# print(groups.pop('마마무'))   # key error
+# print(groups)
 
-# mixed = [3, 4, 1, 7, 'A', '한', '김', 5, 'b', 'B']
-# TypeError: '<' not supported between instances of 'str' and 'int'
+# for group, members in groups.items():
+#     print(f'{group}의 멤버')
+#     for member in members:
+#         if member != '승리':
+#             print(member)
 
-mixed = ['3', '4', '1', '7', 'A', '한', '김', '5', 'b', 'B']
-# ascending : arabic number, alphabet UpperCase, alphabet LowerCase, Korean
-mixed.sort(reverse=True)  # descending
-#print(mixed)
-
-# copy
-# a = [1, 2, 3]
-# b = a.copy()
-# c = list(a)
-# d = a[:]
-#
-# a[1] = 'inha'
-# c[2] = 'univ'
-# print(a, b, c, d)
+for temps in groups.items():
+    print(f'{temps[0]}의 멤버')
+    for member in temps[1]:
+        if member != '승리':
+            print(member)
 
 
-# a = [1, [9, -7], 3]
-# b = a.copy()
-# c = list(a)
-# d = a[:]
-#
-# a[1][1] = 'inha'
-# #a[1][0] = -99
-# print(a, b, c, d)
 
-a = [1, [9, -7], 3]
-b = copy.deepcopy(a)
 
-a[1][1] = 'inha'
-#a[1][0] = -99
-print(a, b)
+'''
+빅뱅의 멤버
+GD
+태양
+탑
+대성
+마마무의 멤버
+문별
+솔라
+휘인
+화사
+'''
