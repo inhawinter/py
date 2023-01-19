@@ -1,62 +1,39 @@
-import random
+import copy
 
-# hard coding
-# numbers = list()
-# numbers.append(random.randint(1, 100))
-# numbers.append(random.randint(1, 100))
-# numbers.append(random.randint(1, 100))
-# numbers.append(random.randint(1, 100))
-# numbers.append(random.randint(1, 100))
-# print(numbers)
-
-# for loop
-# numbers = []
-# for k in range(5):
-#     numbers.append(random.randint(1, 100))
-# print(numbers)
-
-# list comprehension
-# numbers = [random.randint(1, 100) for k in range(5)]
-# print(numbers)
-
-
-# for loop
-# odds = []
-# for k in range(1, 11):
-#     if k % 2:
-#         odds.append(k)
-# print(odds)
-
-
-# list comprehension
-odds = [k for k in range(1, 11) if k % 2]
+odds = list(range(1, 11, 2))
 print(odds)
 
-# index
-# for i in range(len(odds)):
-#     odds[i] = str(odds[i])
-# print(odds)
-# print('/'.join(odds))  # 리스트의 원소들을 하나의 문자열로 만들어준다
+# mixed = [3, 4, 1, 7, 'A', '한', '김', 5, 'b', 'B']
+# TypeError: '<' not supported between instances of 'str' and 'int'
+
+mixed = ['3', '4', '1', '7', 'A', '한', '김', '5', 'b', 'B']
+# ascending : arabic number, alphabet UpperCase, alphabet LowerCase, Korean
+mixed.sort(reverse=True)  # descending
+#print(mixed)
+
+# copy
+# a = [1, 2, 3]
+# b = a.copy()
+# c = list(a)
+# d = a[:]
+#
+# a[1] = 'inha'
+# c[2] = 'univ'
+# print(a, b, c, d)
 
 
-# list
-# temp = list()
-# for odd in odds:
-#     temp.append(str(odd))
-# print(temp)
-# print('/'.join(temp))  # 리스트의 원소들을 하나의 문자열로 만들어준다
+# a = [1, [9, -7], 3]
+# b = a.copy()
+# c = list(a)
+# d = a[:]
+#
+# a[1][1] = 'inha'
+# #a[1][0] = -99
+# print(a, b, c, d)
 
+a = [1, [9, -7], 3]
+b = copy.deepcopy(a)
 
-# enumerate
-for item in enumerate(odds):  # (index, value) 튜플 형태로 리턴
-    # print(item)
-    odds[item[0]] = str(item[1])
-print(odds)
-print('/'.join(odds))  # 리스트의 원소들을 하나의 문자열로 만들어준다
-
-
-
-
-
-
-
+a[1][1] = 'inha'
+#a[1][0] = -99
+print(a, b)
