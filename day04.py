@@ -1,39 +1,19 @@
-groups = {
-    '빅뱅': ['GD', '태양', '탑', '대성', '승리'],
-    '마마무': ['문별', '솔라', '휘인', '화사']
-}
+# dictionary comprehension
 
-# print(groups['빅뱅'].pop(-1))
-# print(groups)
-# print(groups.pop('마마무'))
-# print(groups)
-# print(groups.pop('마마무'))   # key error
-# print(groups)
+# univ = 'inha university'
+# letter_counts = {letter: univ.count(letter) for letter in univ}
+# print(letter_counts)
 
-# for group, members in groups.items():
-#     print(f'{group}의 멤버')
-#     for member in members:
-#         if member != '승리':
-#             print(member)
-
-for temps in groups.items():
-    print(f'{temps[0]}의 멤버')
-    for member in temps[1]:
-        if member != '승리':
-            print(member)
+univ = 'inha university'
+letter_counts = dict()
+for letter in univ:
+    letter_counts[letter] = univ.count(letter)
+print(letter_counts)
 
 
-
-
-'''
-빅뱅의 멤버
-GD
-태양
-탑
-대성
-마마무의 멤버
-문별
-솔라
-휘인
-화사
-'''
+#prime_set = set([2, 3, 5, 7, 11, 7, 3])
+prime_set = set((2, 3, 5, 7, 11, 7, 3, 19, 19))
+print(prime_set)
+prime_set.add(13)
+prime_set.remove(3)
+print(prime_set)
