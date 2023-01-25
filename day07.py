@@ -1,5 +1,7 @@
-# prime number v1.1
-# function
+# prime number v1.3
+# gui (button 1, entry 2, label 1)
+import tkinter as tk
+
 
 def isprime(n):
     """
@@ -17,13 +19,34 @@ def isprime(n):
     return True
 
 
-number_list = input('input 2 integer number : ').split()
-start = int(number_list[0])
-end = int(number_list[1])
+def click_prime():
+    start = int(en_start.get())
+    end = int(en_end.get())
 
-if end < start:
-    start, end = end, start
+    if end < start:
+        start, end = end, start
 
-for number in range(start, end+1):
-    if isprime(number):
-        print(number, end=' ')
+    results = ''
+    for number in range(start, end + 1):
+        if isprime(number):
+            #results = results + str(number) + ' '
+            results = results + f'{number} '
+
+    lbl_result.config(text=results)
+
+
+win = tk.Tk()
+win.title('구간 소수 계산 프로그램')
+win.geometry('300x150')
+
+lbl_result = tk.Label(win, text='아래 두 정수를 입력하세요')
+en_start = tk.Entry(win)
+en_end = tk.Entry(win)
+btn_prime = tk.Button(win, text='소수 계산', command=click_prime)
+
+lbl_result.pack()
+en_start.pack()
+en_end.pack()
+btn_prime.pack(fill='x')
+
+win.mainloop()
