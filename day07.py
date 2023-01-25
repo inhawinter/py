@@ -1,4 +1,4 @@
-# prime number v1.0
+# prime number v1.1
 # function
 
 def isprime(n):
@@ -11,7 +11,7 @@ def isprime(n):
         return False
 
     for k in range(2, n):
-        if number % k == 0:
+        if n % k == 0:
             return False
 
     return True
