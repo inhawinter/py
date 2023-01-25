@@ -1,16 +1,28 @@
-# Closures
-def calculate():
-    x = 5
-    y = 10
+# Lambda function (before)
 
-    def add_sub(n):  # inner function act as closure
-        return x + n - y
-
-    return add_sub
+import random
 
 
-calc = calculate()
-print(type(calc), calc)
-print(calc(3))
-for i in range(10, 15):
-    print(calc(i))
+def process(no_lists, f):
+    """
+    리스트와 함수를 받아 리스트의 원소들을 받은 함수에 모두 적용
+    :param no_lists: 리스트
+    :param f: 함수
+    :return: void
+    """
+    for no in no_lists:
+        print(f(no))
+
+
+def squares(n):
+    """
+    제곱 함수
+    :param n: integer
+    :return: integer * integer
+    """
+    return n * n
+
+
+numbers = [random.randint(1, 10) for i in range(5)]
+print(numbers)
+process(numbers, squares)
