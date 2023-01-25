@@ -1,4 +1,4 @@
-# Lambda function (before)
+# Lambda function (after)
 
 import random
 
@@ -14,15 +14,7 @@ def process(no_lists, f):
         print(f(no))
 
 
-def squares(n):
-    """
-    제곱 함수
-    :param n: integer
-    :return: integer * integer
-    """
-    return n * n
-
-
 numbers = [random.randint(1, 10) for i in range(5)]
 print(numbers)
-process(numbers, squares)
+process(numbers, lambda x: x * x)  # squares
+process(numbers, lambda x: x + x)  # doubles
