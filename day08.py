@@ -7,10 +7,12 @@ class Pokemon:
         import datetime  # 상속관계 x
         print(f'[{datetime.datetime.now()}] 포켓몬 생성됨 :', end=' ')
 
-    def get_owner(self):
+    @property
+    def owner(self):
         return self.hidden_owner
 
-    def set_owner(self, owner):
+    @owner.setter
+    def owner(self, owner):
         self.hidden_owner = owner
 
     def info(self):  # method (member function)
@@ -27,7 +29,6 @@ class Pokemon:
     def attack(self, idx):
         print(f'{self.skills[idx]} 공격 시전!')
 
-    owner = property(get_owner, set_owner)
 
 class Pikachu(Pokemon):  # class 자식클래스(부모클래스):
     def __init__(self, owner, skills):
