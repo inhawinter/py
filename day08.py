@@ -1,19 +1,60 @@
+# prime number v1.4
 # exception
-try:
-    # raise Exception("예외처리 복습")
-    # print(5+'8')
-    raise TypeError("타입 에러")
-    expr = input('분자 분모 입력 (띄어쓰기로 구분): ').split()
-    print(int(expr[0]) / int(expr[1]))
-except ValueError as err:
-    print(f'숫자를 입력해주세요 ({err})')
-except IndexError as err:
-    print(f'입력 값의 범위에 문제가 있습니다 ({err})')
-except ZeroDivisionError as err:
-    print(f'분모에 0이 올 수 없습니다 ({err})')
-except Exception as other:
-    print(f'예외가 발생했습니다 ({other})')
-else:  # 예외가 발생하지 않았을 때 동작
-    print('프로그램 정상', end=' ')
-finally:  # 예외 발생 여부와 상관 없이 항상 실행
-    print('종료')
+import tkinter as tk
+from tkinter import messagebox
+
+
+def isprime(n):
+    """
+    매개변수로 받은 정수가 소수인지 판정하는 함수
+    :param n: integer number
+    :return: True or False
+    """
+    if n <= 1:
+        return False
+
+    for k in range(2, n):
+        if n % k == 0:
+            return False
+
+    return True
+
+
+def click_prime():
+    try:
+        start = int(en_start.get())
+        end = int(en_end.get())
+
+        if end < start:
+            start, end = end, start
+
+        results = ''
+        for number in range(start, end + 1):
+            if isprime(number):
+                #results = results + str(number) + ' '
+                results = results + f'{number} '
+    except ValueError as err:
+        messagebox.showerror('에러정보', f'숫자를 입력해주세요\n{err}')
+    except Exception as other:
+        lbl_result.config(text=f'예외 발생 : {other}')
+    else:
+        lbl_result.config(text=results)
+    finally:
+        pass
+
+
+win = tk.Tk()
+win.title('구간 소수 계산 프로그램')
+win.geometry('300x100')
+
+lbl_result = tk.Label(win, text='아래 두 정수를 입력하세요')
+en_start = tk.Entry(win)
+en_end = tk.Entry(win)
+btn_prime = tk.Button(win, text='소수 계산', command=click_prime)
+
+lbl_result.pack()
+en_start.pack()
+en_end.pack()
+btn_prime.pack(fill='x')
+
+win.mainloop()
