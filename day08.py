@@ -18,10 +18,11 @@ class Pokemon:
         print('===========')
 
 
-p1 = Pokemon('피카츄', '한지우', '번개/100만볼트/전광석화')
-p2 = Pokemon('꼬부기', '오바람', '거품/물대포/몸통박치기')
-p3 = Pokemon('파이리', '나이기', '불기둥/화염발사')
+class Pikachu(Pokemon):  # class 자식클래스(부모클래스):
+    pass
 
-p3.info()
-p2.info()
 
+pika1 = Pikachu('피카츄', '한지우', '번개/50만 볼트/100만 볼트/전광석화')
+pika1.info()
+p1 = Pokemon('꼬부기', '오바람', '거품/몸통박치기')
+p1.info()
