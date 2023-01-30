@@ -1,11 +1,17 @@
-# Pokemon game v0.2
+# Pokemon game v0.3
 
 class Pokemon:
+    count = 0  # class variable, total counts of pokemon
     def __init__(self, owner, skills):  # constructor
         self.__owner = owner  # like private
         self.skills = skills.split('/')  # list
         import datetime  # 상속관계 x
         print(f'[{datetime.datetime.now()}] 포켓몬 생성됨 :', end=' ')
+        Pokemon.count = Pokemon.count + 1
+
+    @classmethod
+    def no_pokemons(cls):
+        print(f'총 {cls.count}마리의 포켓 몬스터가 게임에 생성 되었습니다')
 
     @property
     def owner(self):
@@ -60,6 +66,7 @@ class Pairi(Pokemon):  # inheritance
 
 if __name__ == "__main__":
     while True:
+        Pokemon.no_pokemons()
         menu = input('1) 포켓몬 생성  2) 프로그램 종료 : ')
         if '2' == menu:
             print('프로그램을 종료합니다')
