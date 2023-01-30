@@ -54,6 +54,10 @@ class Pikachu(Pokemon):  # class 자식클래스(부모클래스):
         return len(self.skills) > len(other.skills)
 
 
+    def __repr__(self):
+        return f'이 피카츄는 {len(self.skills)}개의 기술을 가지고 있는 {self.owner}의 포켓몬입니다'
+
+
 class Ggoboogi(Pokemon):  # inheritance
     def __init__(self, owner, skills):
         super().__init__(owner, skills)
@@ -76,14 +80,17 @@ class Pairi(Pokemon):  # inheritance
 
 if __name__ == "__main__":
     pa = Pikachu('한지우', '번개/50만 볼트/100만 볼트/전광석화')
-    pb = Pikachu('한지우', '번개/50만 볼트/100만 볼트')
+    pb = Pikachu('아이리스', '번개/50만 볼트/100만 볼트')
+
+    print(pb)
     #pc = pa == pb  # 양쪽 피카츄 객체의 주인이 같으면 True
     #pc = pa.equals(pb)
-    pc = pa > pb
+    #pc = pa > pb
 
     #pc = 1 == 2
     #pc = "9" == "9"
-    print(pc)
+
+    #print(pc)
     while True:
         Pokemon.no_pokemons()
         menu = input('1) 포켓몬 생성  2) 프로그램 종료 : ')
