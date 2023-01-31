@@ -1,13 +1,26 @@
-import urllib.request
-import urllib.parse
+from bs4 import BeautifulSoup
 
-api = 'https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp'
+html = """
+<html>
+<head>
+<title>스크레이핑 실습</title>
+</head>
+<body>
+<h1>인하대학교</h1>
+<p>웹스크레이핑</p>
+<p>파이썬 기본 문법, 판다스, GUI ... </p>
+</body>
+</html>
+"""
 
-id = input('지역코드 : ')  # 108 전국, 109 서울인천경기, 105 강원
-values = {'stnId': id}
-parameters = urllib.parse.urlencode(values)
-url = api + '?' + parameters
+soup = BeautifulSoup(html, 'html.parser')
+t = soup.html.head.title
+h1 = soup.html.body.h1.string
+p1 = soup.html.body.p
+p2 = p1.next_sibling.next_sibling
 
-urls = urllib.request.urlopen(url).read()
-texts = urls.decode('utf-8')
-print(texts)
+print(p1.string)
+print(p2.string)
+print(h1)
+print(t)
+print(t.string)
