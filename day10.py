@@ -1,14 +1,13 @@
-# import urllib.request
-#
-# url = 'https://www.inha.ac.kr/sites/kr/images/logo.png'
-# urllib.request.urlretrieve(url, 'inha.png')  # 웹에서 가져온 이미지를 보조기억장치 저장
-# print('저장완료')
-
 import urllib.request
+import urllib.parse
 
-url = 'https://www.inha.ac.kr/sites/kr/images/logo.png'
-logo = urllib.request.urlopen(url).read()  # 이미지를 다운받아서 메모리에 저장
+api = 'https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp'
 
-with open('inha.png', 'wb') as fp:
-    fp.write(logo)
-    print('저장완료')
+id = input('지역코드 : ')  # 108 전국, 109 서울인천경기, 105 강원
+values = {'stnId': id}
+parameters = urllib.parse.urlencode(values)
+url = api + '?' + parameters
+
+urls = urllib.request.urlopen(url).read()
+texts = urls.decode('utf-8')
+print(texts)
