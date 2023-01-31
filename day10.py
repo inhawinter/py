@@ -1,15 +1,14 @@
-import pandas as pd
+# import urllib.request
+#
+# url = 'https://www.inha.ac.kr/sites/kr/images/logo.png'
+# urllib.request.urlretrieve(url, 'inha.png')  # 웹에서 가져온 이미지를 보조기억장치 저장
+# print('저장완료')
 
-df = pd.DataFrame([[4, 7, 13],
-                   [5, 8, 11],
-                   [60, 9, 12]],
-                   index=[1, 2, 3],
-                   columns=['a', 'b', 'c'])
+import urllib.request
 
-# def squares(n):
-#     return n * n
+url = 'https://www.inha.ac.kr/sites/kr/images/logo.png'
+logo = urllib.request.urlopen(url).read()  # 이미지를 다운받아서 메모리에 저장
 
-print(df)
-print(df.apply(lambda n: n * n))
-# print(df.apply(squares))
-# print(df.describe())
+with open('inha.png', 'wb') as fp:
+    fp.write(logo)
+    print('저장완료')
